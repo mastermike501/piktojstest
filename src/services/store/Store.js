@@ -37,6 +37,14 @@ var store = {
 
       this.selectItem(null);
     }
+  },
+  saveItemsToLocalStorage: function () {
+    sessionStorage.setItem('items', JSON.stringify(this.state.addedItems));
+  },
+  retrieveItemsFromLocalStorage: function () {
+    if (sessionStorage.getItem('items')) {
+      this.state.addedItems = JSON.parse(sessionStorage.getItem('items'));
+    }
   }
 };
 

@@ -17,11 +17,17 @@ export default {
     Canvas
   },
   mounted() {
+    window.onbeforeunload = function () {
+      Store.saveItemsToLocalStorage();
+    };
+
     document.body.onkeydown = function (event) {
       if (event.keyCode === 46 || event.keyCode === 8) {
         Store.deleteItem();
       }
     };
+
+    Store.retrieveItemsFromLocalStorage();
   }
 }
 </script>
