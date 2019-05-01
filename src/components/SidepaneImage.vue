@@ -1,7 +1,7 @@
 <template>
   <img
     v-bind:src="src"
-    v-on:click="addToCanvas"
+    @click="addToCanvas"
     title="Click me!"
     class="img-rounded clickable" />
 </template>
@@ -14,14 +14,14 @@ export default {
   props: ['src'],
   methods: {
     addToCanvas: function() {
-      Store.addImage(this.src);
+      Store.addItem('image', this.src);
     }
   }
 }
 </script>
 
 <style scoped>
-  .clickable {
-    cursor: pointer;
-  }
+.clickable {
+  cursor: pointer;
+}
 </style>

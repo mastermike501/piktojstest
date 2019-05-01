@@ -1,16 +1,22 @@
 var store = {
   debug: true,
+  idCounter: 0,
   state: {
-    addedImages: []
+    addedItems: []
   },
-  addImage: function (imageSrc) {
-    var id = this.state.addedImages.length + 1;
-    var newImage = {
-      id,
-      src: imageSrc,
-      location: [0, 0]
+  addItem: function (type, value) {
+    this.idCounter++;
+    const newItem = {
+      id: this.idCounter,
+      type,
+      value,
+      x: 0,
+      y: 0
     };
-    this.state.addedImages.push(newImage);
+    this.state.addedItems.push(newItem);
+  },
+  getItems: function (type) {
+    return this.state.addedItems.filter(item => item.type === type);
   }
 };
 

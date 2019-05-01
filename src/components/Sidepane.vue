@@ -11,7 +11,7 @@
       <h3>Assets</h3>
       <div class="text">
         <h4>Text</h4>
-        <button id="addText" class="btn btn-default">Add Text</button>
+        <button id="addText" class="btn btn-default" @click="addToCanvas">Add Text</button>
       </div>
       <div class="image">
         <h4>Images</h4>
@@ -28,6 +28,7 @@
 
 <script>
 import ServerApi from '../services/api/Server';
+import Store from '../services/store/Store';
 import SidepaneImage from './SidepaneImage.vue'
 
 export default {
@@ -43,6 +44,11 @@ export default {
     ServerApi.getImages()
       // .then(res => console.log(res));
       .then(res => this.images = res);
+  },
+  methods: {
+    addToCanvas: function () {
+      Store.addItem('text', 'Double click to edit');
+    }
   }
 }
 </script>
