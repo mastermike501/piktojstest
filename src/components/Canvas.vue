@@ -8,7 +8,14 @@
 </template>
 
 <script>
-export default {
+import Store from '../services/store/Store';
 
+export default {
+  data() {
+    return {
+      sharedState: Store.state,
+      privateState: {}
+    };
+  }
 }
 </script>

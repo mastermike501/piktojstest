@@ -17,7 +17,9 @@
         <h4>Images</h4>
         <ul class="list-unstyled">
           <!-- List of images here -->
-          <!-- <li><img src="images/sample.jpeg" class="img-rounded" /></li> -->
+          <li v-for="image in images" v-bind:key="image">
+            <SidepaneImage v-bind:src="image" />
+          </li>
         </ul>
       </div>
     </div>
@@ -25,7 +27,22 @@
 </template>
 
 <script>
-export default {
+import ServerApi from '../services/api/Server';
+import SidepaneImage from './SidepaneImage.vue'
 
+export default {
+  components: {
+    SidepaneImage
+  },
+  data() {
+    return {
+      images: []
+    };
+  },
+  created() {
+    ServerApi.getImages()
+      // .then(res => console.log(res));
+      .then(res => this.images = res);
+  }
 }
 </script>
