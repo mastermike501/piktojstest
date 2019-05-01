@@ -13,6 +13,7 @@ export default {
   name: 'SidepaneImage',
   props: ['src'],
   methods: {
+    // add image item to canvas
     addToCanvas: function() {
       Store.addItem('image', this.src);
     }

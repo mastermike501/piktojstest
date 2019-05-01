@@ -1,10 +1,14 @@
 // Draggable code sourced from https://www.w3schools.com/howto/howto_js_draggable.asp
+// Adjusted for use by Michael Kong
 
+// accept item data and a callback functon
 function Draggable(item, cb) {
   const el = document.getElementById(item.id);
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   el.onmousedown = dragMouseDown;
 
+  // on mousedown, register the current position
+  // and set the onmouseup and onmousemove events
   function dragMouseDown(e) {
     e = e || window.event;
     e.preventDefault();
@@ -16,6 +20,8 @@ function Draggable(item, cb) {
     document.onmousemove = elementDrag;
   }
 
+  // on mousemove, move the element to show
+  // user that the element is being dragged
   function elementDrag(e) {
     e = e || window.event;
     e.preventDefault();
@@ -29,6 +35,8 @@ function Draggable(item, cb) {
     el.style.left = (el.offsetLeft - pos1) + "px";
   }
 
+  // on mouseup, unset the event handlers and trigger
+  // the callback with the latest x and y values
   function closeDragElement() {
     // stop moving when mouse button is released:
     document.onmouseup = null;

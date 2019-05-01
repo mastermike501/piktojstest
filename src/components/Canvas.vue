@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      sharedState: Store.state,
+      sharedState: Store.state, // use store data
       privateState: {}
     };
   },

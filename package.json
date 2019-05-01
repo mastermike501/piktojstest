@@ -1,5 +1,8 @@
 {
-  "name": "project",
+  "name": "piktojstest",
+  "author": {
+    "name": "Michael Kong"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {

@@ -17,16 +17,19 @@ export default {
     Canvas
   },
   mounted() {
+    // upon page unload, save items in store to local storage
     window.onbeforeunload = function () {
       Store.saveItemsToLocalStorage();
     };
 
+    // on delete button press, remove selected item from store
     document.body.onkeydown = function (event) {
-      if (event.keyCode === 46 || event.keyCode === 8) {
+      if (event.keyCode === 46) {
         Store.deleteItem();
       }
     };
 
+    // upon page load, retrieve items from local storage
     Store.retrieveItemsFromLocalStorage();
   }
 }

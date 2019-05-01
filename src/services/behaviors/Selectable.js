@@ -1,7 +1,10 @@
 import Store from '../store/Store';
 
+// selectable behavior is delegated to this function/class
 function Selectable(item) {
 
+  // remove border for current item and set border
+  // for selected item
   function selectItem() {
     unselectCurItem();
 

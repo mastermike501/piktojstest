@@ -16,14 +16,19 @@ export default {
   name: 'DraggableImage',
   props: ['item'],
   mounted() {
+    // set image location based on refreshed data
     const el = document.getElementById(this.item.id);
     el.style.top = this.item.x;
     el.style.left = this.item.y;
   },
   methods: {
+    // refer to Selectable.js to view delegated code
     selectItem: function () {
       Selectable(this.item).selectItem();
     },
+
+    // based on x and y values after drop,
+    // update the store with the latest value
     registerDraggable: function () {
       const item = this.item;
       Draggable(item, function (x, y) {

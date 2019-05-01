@@ -46,6 +46,7 @@ export default {
       .then(res => this.images = res);
   },
   methods: {
+    // add text item to canvas
     addToCanvas: function () {
       Store.addItem('text', 'Double click to edit');
     }
