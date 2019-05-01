@@ -17,8 +17,8 @@
         <h4>Images</h4>
         <ul class="list-unstyled">
           <!-- List of images here -->
-          <li v-for="image in images" v-bind:key="image">
-            <SidepaneImage v-bind:src="image" />
+          <li v-for="image in images" :key="image">
+            <SidepaneImage :src="image" />
           </li>
         </ul>
       </div>

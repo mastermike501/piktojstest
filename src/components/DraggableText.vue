@@ -1,14 +1,14 @@
 <template>
   <div
     class="draggable"
-    v-bind:id="itemProps.id"
+    :id="itemProps.id"
     @mousedown="registerDraggable"
     @dblclick="setEditMode">
     <input
       type="text"
-      v-bind:id="'textbox' + itemProps.id"
+      :id="getId()"
       v-if="isEditMode"
-      v-bind:value="itemProps.value"
+      :value="itemProps.value"
       @blur="resetEditMode">
     <span v-else>
       {{ itemProps.value }}
@@ -35,14 +35,17 @@ export default {
     },
     setEditMode: function () {
       this.isEditMode = true;
-      const id = this.itemProps.id;
+      const id = this.getId();
 
       setTimeout(function () {
-        document.getElementById(`textbox${id}`).focus();
+        document.getElementById(id).focus();
       }, 100);
     },
     resetEditMode: function () {
       this.isEditMode = false;
+    },
+    getId: function () {
+      return `textbox${this.itemProps.id}`;
     }
   }
 }

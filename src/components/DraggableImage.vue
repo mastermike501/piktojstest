@@ -1,7 +1,7 @@
 <template>
   <img
-    v-bind:id="itemProps.id"
-    v-bind:src="itemProps.value"
+    :id="itemProps.id"
+    :src="itemProps.value"
     @mousedown="registerDraggable"
     class="draggable" />
 </template>

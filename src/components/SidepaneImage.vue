@@ -1,6 +1,6 @@
 <template>
   <img
-    v-bind:src="src"
+    :src="src"
     @click="addToCanvas"
     title="Click me!"
     class="img-rounded clickable" />

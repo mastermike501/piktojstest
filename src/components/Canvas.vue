@@ -5,12 +5,12 @@
       <!-- Add images and texts to here -->
       <DraggableImage
         v-for="item in getImageItems()"
-        v-bind:key="item.id"
-        v-bind:item-props="item" />
+        :key="item.id"
+        :item-props="item" />
       <DraggableText
         v-for="item in getTextItems()"
-        v-bind:key="item.id"
-        v-bind:item-props="item" />
+        :key="item.id"
+        :item-props="item" />
     </div>
   </div>
 </template>
