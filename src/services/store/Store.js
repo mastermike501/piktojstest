@@ -50,10 +50,15 @@ var store = {
   },
   saveItemsToLocalStorage: function () {
     sessionStorage.setItem('items', JSON.stringify(this.state.addedItems));
+    sessionStorage.setItem('idCounter', this.idCounter);
   },
   retrieveItemsFromLocalStorage: function () {
     if (sessionStorage.getItem('items')) {
       this.state.addedItems = JSON.parse(sessionStorage.getItem('items'));
+    }
+
+    if (sessionStorage.getItem('idCounter')) {
+      this.idCounter = sessionStorage.getItem('idCounter');
     }
   }
 };
