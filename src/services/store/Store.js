@@ -2,7 +2,8 @@ var store = {
   debug: true,
   idCounter: 0,
   state: {
-    addedItems: []
+    addedItems: [],
+    currentlySelected: null
   },
   addItem: function (type, value) {
     this.idCounter++;
@@ -17,7 +18,13 @@ var store = {
   },
   getItems: function (type) {
     return this.state.addedItems.filter(item => item.type === type);
-  }
+  },
+  selectItem: function (item) {
+    this.state.currentlySelected = item;
+  },
+  // deleteItem: function (id) {
+  //   this.state.addedItems.find(item => item.id === id);
+  // }
 };
 
 export default store;

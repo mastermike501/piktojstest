@@ -3,12 +3,13 @@
     class="draggable"
     :id="itemProps.id"
     @mousedown="registerDraggable"
+    @click="selectItem"
     @dblclick="setEditMode">
     <input
       type="text"
       :id="getId()"
       v-if="isEditMode"
-      :value="itemProps.value"
+      v-model="itemProps.value"
       @blur="resetEditMode">
     <span v-else>
       {{ itemProps.value }}
@@ -18,6 +19,7 @@
 
 <script>
 import Draggable from '../services/behaviors/Draggable';
+import Selectable from '../services/behaviors/Selectable';
 import { setTimeout } from 'timers';
 
 export default {
@@ -29,6 +31,9 @@ export default {
     };
   },
   methods: {
+    selectItem: function () {
+      Selectable(this.itemProps).selectItem();
+    },
     registerDraggable: function () {
       const el = document.getElementById(this.itemProps.id);
       Draggable(el);
