@@ -31,6 +31,11 @@ export default {
       isEditMode: false
     };
   },
+  mounted() {
+    const el = document.getElementById(this.item.id);
+    el.style.top = this.item.x;
+    el.style.left = this.item.y;
+  },
   methods: {
     selectItem: function () {
       Selectable(this.item).selectItem();
