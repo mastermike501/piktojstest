@@ -11,10 +11,10 @@ function Selectable(item) {
   }
 
   function unselectCurItem() {
-    const item = Store.state.currentlySelected;
+    const selectedItem = Store.state.selectedItem;
 
-    if (item) {
-      const el = document.getElementById(item.id);
+    if (selectedItem) {
+      const el = document.getElementById(selectedItem.id);
       el.style.border = 'none';
       Store.selectItem(null);
     }

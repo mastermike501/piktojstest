@@ -3,7 +3,7 @@ var store = {
   idCounter: 0,
   state: {
     addedItems: [],
-    currentlySelected: null
+    selectedItem: null
   },
   addItem: function (type, value) {
     this.idCounter++;
@@ -20,11 +20,16 @@ var store = {
     return this.state.addedItems.filter(item => item.type === type);
   },
   selectItem: function (item) {
-    this.state.currentlySelected = item;
+    this.state.selectedItem = item;
   },
-  // deleteItem: function (id) {
-  //   this.state.addedItems.find(item => item.id === id);
-  // }
+  deleteItem: function () {
+    if (this.state.selectedItem) {
+      const id = this.state.selectedItem.id;
+      this.state.addedItems = this.state.addedItems.filter(item => item.id !== id);
+
+      this.selectItem(null);
+    }
+  }
 };
 
 export default store;

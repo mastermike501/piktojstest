@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import Store from './services/store/Store'
 import Sidepane from './components/Sidepane.vue'
 import Canvas from './components/Canvas.vue'
 
@@ -14,17 +15,13 @@ export default {
   components: {
     Sidepane,
     Canvas
+  },
+  mounted() {
+    document.body.onkeydown = function (event) {
+      if (event.keyCode === 46 || event.keyCode === 8) {
+        Store.deleteItem();
+      }
+    };
   }
 }
 </script>
-
-<style>
-/* #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
-</style>
