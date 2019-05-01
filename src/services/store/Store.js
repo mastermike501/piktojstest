@@ -11,8 +11,8 @@ var store = {
       id: this.idCounter,
       type,
       value,
-      x: 0,
-      y: 0
+      x: '',
+      y: ''
     };
     this.state.addedItems.push(newItem);
   },
@@ -21,6 +21,14 @@ var store = {
   },
   selectItem: function (item) {
     this.state.selectedItem = item;
+  },
+  updateItem: function (updatedItem) {
+    this.state.addedItems = this.state.addedItems.map(item => {
+      if (item.id === updatedItem.id) {
+        return updatedItem;
+      }
+      return item;
+    });
   },
   deleteItem: function () {
     if (this.state.selectedItem) {

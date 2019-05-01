@@ -7,11 +7,11 @@
       <DraggableImage
         v-for="item in getImageItems()"
         :key="item.id"
-        :item-props="item" />
+        :item="item" />
       <DraggableText
         v-for="item in getTextItems()"
         :key="item.id"
-        :item-props="item" />
+        :item="item" />
     </div>
   </div>
 </template>

@@ -1,8 +1,9 @@
 // Draggable code sourced from https://www.w3schools.com/howto/howto_js_draggable.asp
 
-function Draggable(elmnt) {
+function Draggable(item, cb) {
+  const el = document.getElementById(item.id);
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  elmnt.onmousedown = dragMouseDown;
+  el.onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
     e = e || window.event;
@@ -24,14 +25,16 @@ function Draggable(elmnt) {
     pos3 = e.clientX;
     pos4 = e.clientY;
     // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    el.style.top = (el.offsetTop - pos2) + "px";
+    el.style.left = (el.offsetLeft - pos1) + "px";
   }
 
   function closeDragElement() {
     // stop moving when mouse button is released:
     document.onmouseup = null;
     document.onmousemove = null;
+
+    cb(el.style.top, el.style.left);
   }
 }
 

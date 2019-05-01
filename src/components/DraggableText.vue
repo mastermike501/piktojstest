@@ -1,7 +1,7 @@
 <template>
   <div
     class="draggable"
-    :id="itemProps.id"
+    :id="item.id"
     @mousedown="registerDraggable"
     @click="selectItem"
     @dblclick="setEditMode">
@@ -9,22 +9,23 @@
       type="text"
       :id="getId()"
       v-if="isEditMode"
-      v-model="itemProps.value"
+      v-model="item.value"
       @blur="resetEditMode">
     <span v-else>
-      {{ itemProps.value }}
+      {{ item.value }}
     </span>
   </div>
 </template>
 
 <script>
+import Store from '../services/store/Store';
 import Draggable from '../services/behaviors/Draggable';
 import Selectable from '../services/behaviors/Selectable';
 import { setTimeout } from 'timers';
 
 export default {
   name: 'DraggableText',
-  props: ['itemProps'],
+  props: ['item'],
   data() {
     return {
       isEditMode: false
@@ -32,11 +33,15 @@ export default {
   },
   methods: {
     selectItem: function () {
-      Selectable(this.itemProps).selectItem();
+      Selectable(this.item).selectItem();
     },
     registerDraggable: function () {
-      const el = document.getElementById(this.itemProps.id);
-      Draggable(el);
+      const item = this.item;
+      Draggable(item, function (x, y) {
+        Store.updateItem(
+          Object.assign({}, item, {x, y})
+        );
+      });
     },
     setEditMode: function () {
       this.isEditMode = true;
@@ -50,7 +55,7 @@ export default {
       this.isEditMode = false;
     },
     getId: function () {
-      return `textbox${this.itemProps.id}`;
+      return `textbox${this.item.id}`;
     }
   }
 }
